@@ -27,7 +27,7 @@ fun dayOfWeek(){
 }
 
 fun feedTheFish(){
-    val day = "Tuesday"
+    val day = randomDay()
     val food = "pellets"
     println("Today is $day and the fish eat $food")
 }
