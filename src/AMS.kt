@@ -2,7 +2,11 @@ import java.util.*
 
 fun main(args: Array<String>) {
     println("Hello ${args[0]} !!")
-    feedTheFish()
+//    feedTheFish()
+    println(canAddFish(10.0, listOf(3,3,3)))
+    println(canAddFish(8.0, listOf(2,2,2), hasDecorations = false))
+    println(canAddFish(9.0, listOf(3,3,3), 3))
+    println(canAddFish(10.0, listOf(), 7 , true))
 }
 
 fun dayOfWeek(){
@@ -51,4 +55,21 @@ fun fishFood(day: String) : String {
         else -> "fasting"
     }
 
+}
+
+fun canAddFish(tankSize: Double, currentFishList: List<Int>, fishSize: Int = 2, hasDecorations: Boolean = true) : Boolean{
+    // 1. Get currentFishList size
+    var totalCurrentFishSize = 0
+    for(currentFishSize in currentFishList){
+        totalCurrentFishSize += currentFishSize
+    }
+    var expectedTotalFishSize = totalCurrentFishSize + fishSize
+
+    if(hasDecorations && (expectedTotalFishSize <= tankSize*0.8)){
+        return true
+    }else if(!hasDecorations && (expectedTotalFishSize <= tankSize)){
+        return true
+    }
+
+    return false
 }
