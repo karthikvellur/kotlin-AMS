@@ -2,18 +2,6 @@ import java.util.*
 
 fun main(args: Array<String>) {
     println("Hello ${args[0]} !!")
-    dayOfWeek()
-
-    val isUnit = println("This is an expression")
-    println(isUnit)
-
-    val temp = 50;
-    var result = if (temp > 30) true else false
-    println(result)
-
-    val resultStr = "The temp is ${ if (temp > 30) "hot" else "cold"} "
-    println(resultStr)
-
     feedTheFish()
 }
 
@@ -26,10 +14,24 @@ fun dayOfWeek(){
     }
 }
 
+// Good practice to have default arguements at the end
+fun shouldChangedWater(
+        day: String,
+        temperature: Int = 50,
+        dirty: Int = 20) : Boolean {
+    return true
+}
+
 fun feedTheFish(){
     val day = randomDay()
     val food = fishFood(day)
     println("Today is $day and the fish eat $food")
+    shouldChangedWater(day, 20, 50)
+    shouldChangedWater(day, 20)
+    shouldChangedWater(day, dirty=50)
+    if(shouldChangedWater(day="Monday")){
+        println("Change the water today")
+    }
 }
 
 fun randomDay() : String {
