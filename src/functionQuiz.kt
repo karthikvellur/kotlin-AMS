@@ -1,6 +1,6 @@
 fun main(){
     for(i in 1..10){
-        var fortune = getFortuneCookie();
+        var fortune = getFortuneCookie(getBirthday());
         println("Fortune: " + fortune)
         if(fortune.contains("Take it easy") ){
             break
@@ -8,7 +8,7 @@ fun main(){
     }
 }
 
-fun getFortuneCookie(): String{
+fun getFortuneCookie(birthday: Int?): String{
     val cookieFortunes = mutableListOf(
         "You will have a great day!",
         "Things will go well for you today.",
@@ -18,9 +18,18 @@ fun getFortuneCookie(): String{
         "Take it easy and enjoy life!",
         "Treasure your friends because they are your greatest fortune."
     )
+
+    return when(birthday){
+        28 -> cookieFortunes[0]
+        31 -> cookieFortunes[0]
+        in 1..7 -> cookieFortunes[2]
+        else -> cookieFortunes[5]
+    }
+}
+
+fun getBirthday(): Int?{
     print("Enter your birthday: ")
     var input: String? = readLine()
     var birthday = input!!.toIntOrNull()
-    birthday = birthday?.rem(cookieFortunes.size) ?: 1
-    return cookieFortunes[birthday]
+    return birthday
 }
