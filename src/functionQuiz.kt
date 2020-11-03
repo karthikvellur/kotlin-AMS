@@ -20,8 +20,7 @@ fun getFortuneCookie(birthday: Int?): String{
     )
 
     return when(birthday){
-        28 -> cookieFortunes[0]
-        31 -> cookieFortunes[0]
+        28, 31 -> cookieFortunes[0]
         in 1..7 -> cookieFortunes[2]
         else -> cookieFortunes[5]
     }
