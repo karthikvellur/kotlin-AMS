@@ -11,10 +11,12 @@ fun main(args: Array<String>) {
     println(shouldChangeWater("Monday", dirty = 40))
 }
 
+fun getDirtySensorReading() = 20
+
 fun shouldChangeWater(
     day: String,
     temperature: Int = 22,
-    dirty: Int = 20) : Boolean{
+    dirty: Int = getDirtySensorReading()) : Boolean{
 
     val isTooHot = temperature > 30
     fun isSunday(day: String) = day == "Sunday"
