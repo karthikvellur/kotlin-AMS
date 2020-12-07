@@ -1,13 +1,33 @@
 import java.util.*
 
 fun main(args: Array<String>) {
-    println("Hello ${args[0]} !!")
+//    println("Hello ${args[0]} !!")
 //    feedTheFish()
-    println(canAddFish(10.0, listOf(3,3,3)))
-    println(canAddFish(8.0, listOf(2,2,2), hasDecorations = false))
-    println(canAddFish(9.0, listOf(3,3,3), 3))
-    println(canAddFish(10.0, listOf(), 7 , true))
+//    println(canAddFish(10.0, listOf(3,3,3)))
+//    println(canAddFish(8.0, listOf(2,2,2), hasDecorations = false))
+//    println(canAddFish(9.0, listOf(3,3,3), 3))
+//    println(canAddFish(10.0, listOf(), 7 , true))
+
+    println(shouldChangeWater("Monday", dirty = 40))
 }
+
+fun shouldChangeWater(
+    day: String,
+    temperature: Int = 22,
+    dirty: Int = 20) : Boolean{
+
+    val isTooHot = temperature > 30
+    fun isSunday(day: String) = day == "Sunday"
+
+    return when {
+        isTooHot -> true
+        isDirty(dirty) -> true
+        isSunday(day) -> true
+        else -> false
+    }
+}
+
+fun isDirty(dirty: Int) = dirty > 30
 
 fun dayOfWeek(){
     println("What day is it today?")
