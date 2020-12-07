@@ -1,16 +1,27 @@
 fun main(args: Array<String>){
-    for(i in 1..10){
-        var fortune = getFortuneCookie(getBirthday());
-        println("Fortune: " + fortune)
-        if(fortune.contains("Take it easy") ){
-            break
-        }
+//    for(i in 1..10){
+//        var fortune = getFortuneCookie(getBirthday())
+//        println("Fortune: " + fortune)
+//        if(fortune.contains("Take it easy") ){
+//            break
+//        }
+//    }
+
+    var fortune: String = ""
+    repeat(10){
+        fortune = getFortuneCookie(getBirthday())
+        println("\n Your fortune is: $fortune")
+//        if(fortune.contains("Take it easy")) break;
     }
 
     // Function parameters default arguments
-    println(whatShouldIDoToday("happy"));
-    println(whatShouldIDoToday("sad"));
-    println(whatShouldIDoToday("happy", weather = "cloudy"));
+//    println("Your mood today ? : ")
+//    println(whatShouldIDoToday(readLine()!!))
+    println(whatShouldIDoToday("happy"))
+    println(whatShouldIDoToday("sad"))
+    println(whatShouldIDoToday("happy", weather = "cloudy"))
+    println(whatShouldIDoToday("sad", "rainy", 0))
+    println(whatShouldIDoToday(mood = "exciting", temperature = 40))
 }
 
 fun getFortuneCookie(birthday: Int?): String{
@@ -38,9 +49,23 @@ fun getBirthday(): Int?{
     return birthday
 }
 
+/**
+ * mood == "sad" && weather == "rainy" && temperature == 0
+ * -> "stay in bed"
+ * temperature > 35 -> "go swimming"
+ */
+
+fun isHappySunny(mood: String, weather: String) = (mood == "happy" && weather == "sunny")
+
 fun whatShouldIDoToday(mood: String, weather: String = "sunny", temperature: Int = 24): String{
+
+    fun isSadRainyCold() = (mood == "sad" && weather == "rainy" && temperature == 0)
+    fun isSwimmingFeasible(temperature: Int) = temperature > 35
+
     return when {
-        mood.equals("happy") && weather.equals("sunny") -> "go for walk"
+        isHappySunny(mood, weather) -> "go for walk"
+        isSadRainyCold() -> "stay in bed"
+        isSwimmingFeasible(temperature) -> "go swimming"
         else -> "Stay home and read."
     }
 }
