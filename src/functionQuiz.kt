@@ -1,4 +1,4 @@
-fun main(){
+fun main(args: Array<String>){
     for(i in 1..10){
         var fortune = getFortuneCookie(getBirthday());
         println("Fortune: " + fortune)
@@ -6,6 +6,11 @@ fun main(){
             break
         }
     }
+
+    // Function parameters default arguments
+    println(whatShouldIDoToday("happy"));
+    println(whatShouldIDoToday("sad"));
+    println(whatShouldIDoToday("happy", weather = "cloudy"));
 }
 
 fun getFortuneCookie(birthday: Int?): String{
@@ -31,4 +36,11 @@ fun getBirthday(): Int?{
     var input: String? = readLine()
     var birthday = input!!.toIntOrNull()
     return birthday
+}
+
+fun whatShouldIDoToday(mood: String, weather: String = "sunny", temperature: Int = 24): String{
+    return when {
+        mood.equals("happy") && weather.equals("sunny") -> "go for walk"
+        else -> "Stay home and read."
+    }
 }
