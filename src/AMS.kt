@@ -8,8 +8,31 @@ fun main(args: Array<String>) {
 //    println(canAddFish(9.0, listOf(3,3,3), 3))
 //    println(canAddFish(10.0, listOf(), 7 , true))
 
-    println(shouldChangeWater("Monday", dirty = 40))
+//    println(shouldChangeWater("Monday", dirty = 40))
+
+    eagerExample()
 }
+
+fun eagerExample() {
+    val decorations = listOf( "rock", "pagoda", "plastic plant", "alligator", "flowerpot")
+
+    val eager = decorations.filter { it[0] == 'p' }
+    println("Eagered filtered list: " + eager);
+
+    // apply filter lazily
+    val filtered = decorations.asSequence().filter { it[0] == 'p' }
+    println("Lazy filtered: " + filtered) // At this point the filter is not applied, rather it is simply stored as a sequence object
+    println("Lazy filtered converted to List: " + filtered.toList()) // When toList() is called, the filter is applied
+
+    val lazyMap = decorations.asSequence().map {
+        println("map: $it")
+               it
+    }
+    println(lazyMap)
+    println("first: ${lazyMap.first()}")
+    println("all: ${lazyMap.toList()}")
+}
+
 
 fun getDirtySensorReading() = 20
 
