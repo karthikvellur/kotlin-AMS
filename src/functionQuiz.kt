@@ -1,4 +1,9 @@
 fun main(args: Array<String>){
+    val spices = listOf("curry", "pepper", "cayenne", "ginger", "red curry", "green curry", "red pepper" )
+    println("Sorted by Length ${spices.filter { true }.sortedBy { it.length }}")
+    println("Spices that start with 'c' and end with 'e', method1 ${spices.filter { it.startsWith('c')}.filter { it.endsWith('e') }}")
+    println("Spices that start with 'c' and end with 'e', method2 ${spices.filter { it.startsWith('c') && it.endsWith('e') }}")
+    println("Take first 3 elements and return the ones which start with c ${spices.take(3).filter { it.startsWith('c') }}")
 //    for(i in 1..10){
 //        var fortune = getFortuneCookie(getBirthday())
 //        println("Fortune: " + fortune)
@@ -6,22 +11,21 @@ fun main(args: Array<String>){
 //            break
 //        }
 //    }
-
-    var fortune: String = ""
-    repeat(10){
-        fortune = getFortuneCookie(getBirthday())
-        println("\n Your fortune is: $fortune")
+//    var fortune: String = ""
+//    repeat(10){
+//        fortune = getFortuneCookie(getBirthday())
+//        println("\n Your fortune is: $fortune")
 //        if(fortune.contains("Take it easy")) break;
-    }
+//    }
 
     // Function parameters default arguments
 //    println("Your mood today ? : ")
 //    println(whatShouldIDoToday(readLine()!!))
-    println(whatShouldIDoToday("happy"))
-    println(whatShouldIDoToday("sad"))
-    println(whatShouldIDoToday("happy", weather = "cloudy"))
-    println(whatShouldIDoToday("sad", "rainy", 0))
-    println(whatShouldIDoToday(mood = "exciting", temperature = 40))
+//    println(whatShouldIDoToday("happy"))
+//    println(whatShouldIDoToday("sad"))
+//    println(whatShouldIDoToday("happy", weather = "cloudy"))
+//    println(whatShouldIDoToday("sad", "rainy", 0))
+//    println(whatShouldIDoToday(mood = "exciting", temperature = 40))
 }
 
 fun getFortuneCookie(birthday: Int?): String{
