@@ -2,7 +2,7 @@ import java.util.*
 
 fun main(args: Array<String>) {
 //    println("Hello ${args[0]} !!")
-//    feedTheFish()
+    feedTheFish()
 //    println(canAddFish(10.0, listOf(3,3,3)))
 //    println(canAddFish(8.0, listOf(2,2,2), hasDecorations = false))
 //    println(canAddFish(9.0, listOf(3,3,3), 3))
@@ -10,7 +10,22 @@ fun main(args: Array<String>) {
 
 //    println(shouldChangeWater("Monday", dirty = 40))
 
-    eagerExample()
+//    eagerExample()
+}
+
+var dirty = 20
+val waterFilter: (Int) -> Int = { dirty -> dirty/2}
+fun feedFish(dirty: Int) = dirty + 10
+fun updateDirty(dirty: Int, operation:(Int) -> Int):Int {
+    return operation(dirty)
+}
+fun dirtyProcessor() {
+    dirty = updateDirty(dirty, waterFilter)
+    println("Dirty update using waterFilter(val having function): ${dirty}")
+    dirty = updateDirty(dirty, ::feedFish) // Since feedFish is a normal function, need to use :: syntax followed by function name
+    println("Dirty update by passing feedFish function reference: ${dirty}")
+    dirty = updateDirty(dirty) { dirty -> dirty/2}
+    println("Dirty update, function passed as lamda outside the parantheses: ${dirty}")
 }
 
 fun eagerExample() {
@@ -81,6 +96,8 @@ fun feedTheFish(){
     if(shouldChangedWater(day="Monday")){
         println("Change the water today")
     }
+
+    dirtyProcessor()
 }
 
 fun randomDay() : String {
