@@ -1,9 +1,12 @@
+import java.util.*
+
 fun main(args: Array<String>){
-    val spices = listOf("curry", "pepper", "cayenne", "ginger", "red curry", "green curry", "red pepper" )
-    println("Sorted by Length ${spices.filter { true }.sortedBy { it.length }}")
-    println("Spices that start with 'c' and end with 'e', method1 ${spices.filter { it.startsWith('c')}.filter { it.endsWith('e') }}")
-    println("Spices that start with 'c' and end with 'e', method2 ${spices.filter { it.startsWith('c') && it.endsWith('e') }}")
-    println("Take first 3 elements and return the ones which start with c ${spices.take(3).filter { it.startsWith('c') }}")
+//    val spices = listOf("curry", "pepper", "cayenne", "ginger", "red curry", "green curry", "red pepper" )
+//    println("Sorted by Length ${spices.filter { true }.sortedBy { it.length }}")
+//    println("Spices that start with 'c' and end with 'e', method1 ${spices.filter { it.startsWith('c')}.filter { it.endsWith('e') }}")
+//    println("Spices that start with 'c' and end with 'e', method2 ${spices.filter { it.startsWith('c') && it.endsWith('e') }}")
+//    println("Take first 3 elements and return the ones which start with c ${spices.take(3).filter { it.startsWith('c') }}")
+
 //    for(i in 1..10){
 //        var fortune = getFortuneCookie(getBirthday())
 //        println("Fortune: " + fortune)
@@ -26,6 +29,29 @@ fun main(args: Array<String>){
 //    println(whatShouldIDoToday("happy", weather = "cloudy"))
 //    println(whatShouldIDoToday("sad", "rainy", 0))
 //    println(whatShouldIDoToday(mood = "exciting", temperature = 40))
+
+    //Lamda Practice
+//    val random1 = Random().nextInt(100)
+//    val random2 = { Random().nextInt(100) }
+//    println("Random1 ${random1}")
+//    println("Random1 ${random1}")
+//    println("Random2 ${random2()}")
+//    println("Random2 ${random2()}")
+
+    val rollDice: (Int) -> Int = {
+        sides ->
+            var diceValue = 0
+            if(sides != 0){
+                for (i in 0..sides){
+                    diceValue = Random().nextInt(12)
+                    println("diceValue iteration ${diceValue}")
+                }
+            }
+            diceValue
+    }
+
+    println("RollDice: ${rollDice(4)}")
+    println("RollDice: ${rollDice(0)}")
 }
 
 fun getFortuneCookie(birthday: Int?): String{
