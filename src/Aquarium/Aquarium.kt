@@ -2,6 +2,9 @@ package Aquarium
 
 class Aquarium {
 
+    // Everything is public by default
+    // Visibility: https://kotlinlang.org/docs/reference/visibility-modifiers.html
+
     var width: Int = 20
     var height: Int = 20
     var length: Int = 20
