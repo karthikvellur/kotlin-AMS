@@ -32,4 +32,21 @@ fun buildAquarium(){
             "Width: ${myAquarium2.width} " +
             "Height: ${myAquarium2.height} "
             )
+
+    makeFish()
+}
+
+fun feedFish(fish: FishAction){
+
+    fish.eat()
+}
+
+fun makeFish(){
+    val shark = Shark()
+    val plecostomus = Plecostomus()
+
+    println("Shark: ${shark.color} Plecostomus: ${plecostomus.color}")
+
+    shark.eat()
+    plecostomus.eat()
 }

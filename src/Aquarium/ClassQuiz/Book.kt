@@ -9,7 +9,7 @@ open class Book(val title:String = "defaultTitle", val author:String = "defaultA
 }
 
 class eBook(val format: String = "text"): Book(){
-    var wordCount : Int = 0
+    internal var wordCount : Int = 0
     override fun readPage(){
         wordCount = wordCount + 250
     }
