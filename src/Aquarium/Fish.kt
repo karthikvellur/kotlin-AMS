@@ -5,6 +5,9 @@ class Fish(val friendly: Boolean = true, volumeNeeded: Int) {
     // friendly is defined with val, so it becomes a property of the class
     // volumeNeeded is not defined with val or var, so it does NOT become a property of the class
 
+    // Best practice is to use one constructor and init blocks
+    // Use helper functions with default values instead of creating constructors with different default value or additional arguments
+
     val size: Int
 
     init {
