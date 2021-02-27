@@ -40,6 +40,7 @@ class Fish(val friendly: Boolean = true, volumeNeeded: Int) {
  * Helper Function (Instead of default constructor)
  * Make use of the functions instead of declaring one more constructor having default values
  * Basically, since default values can be assigned in constructors, no need to declare default constructors
+ *  ***** For good Kotlin code, one constructor with helper functions is sufficient *****
  */
 fun makeDefaultFish() = Fish(true, 50)
 
