@@ -24,5 +24,6 @@ fun main(args: Array<String>){
     for(Spice in lessSpicyList){
         println("Less spicy name: ${Spice.name}")
     }
-    println("Salt spice: ${makeSalt().name}")
+    println("Salt spice name: ${makeSalt().name} \n")
+    println("Salt spice heat: ${makeSalt().heat}")
 }
