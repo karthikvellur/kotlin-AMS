@@ -36,6 +36,13 @@ class Fish(val friendly: Boolean = true, volumeNeeded: Int) {
     }
 }
 
+/**
+ * Helper Function (Instead of default constructor)
+ * Make use of the functions instead of declaring one more constructor having default values
+ * Basically, since default values can be assigned in constructors, no need to declare default constructors
+ */
+fun makeDefaultFish() = Fish(true, 50)
+
 fun fishExample(){
     val fish = Fish(true, 20)
     println("Is the fish friendly? ${fish.friendly}. It needs volume ${fish.size}")
@@ -43,4 +50,5 @@ fun fishExample(){
 
 fun main(args: Array<String>){
     val fish = Fish(false, 10)
+    makeDefaultFish()
 }
